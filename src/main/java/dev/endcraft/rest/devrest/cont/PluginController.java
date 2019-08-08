@@ -26,6 +26,7 @@ public class PluginController {
     @ResponseBody
     @GetMapping(path = "/v1/plugin/name/{name}")
     public List<Plugin> getPluginsByName(@RequestAttribute String name) {
+        //Em andamento.
         return Lists.newArrayList();
     }
 
