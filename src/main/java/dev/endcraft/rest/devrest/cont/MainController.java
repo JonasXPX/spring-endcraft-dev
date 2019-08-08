@@ -1,6 +1,7 @@
 package dev.endcraft.rest.devrest.cont;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -26,8 +27,12 @@ public class MainController {
         cr.save(new Customer(name, email != null && !email.equals("") ? email : ""));
     }
 
+    @ResponseBody
     @RequestMapping(path = "/api/list", method = RequestMethod.GET)
-    public @ResponseBody Page<Customer> getAllCostumers(Pageable pageable) {
-        return cr.findAll(pageable);
+    public Iterable<Customer> getAllCostumers() {
+        return cr.findAll();
     }
+
+
+
 }

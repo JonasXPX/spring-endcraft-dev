@@ -9,4 +9,9 @@ import dev.endcraft.rest.devrest.entitys.Customer;
 
 
 @Repository
-public interface CustumerRepository extends CrudRepository<Customer, Long>, QuerydslPredicateExecutor<Customer>{}
+public interface CustumerRepository extends CrudRepository<Customer, Long>{
+
+    Customer findByCustumerName(String name);
+
+
+}
