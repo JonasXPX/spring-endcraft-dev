@@ -3,16 +3,16 @@ package dev.endcraft.rest.devrest.entitys;
 import javax.persistence.*;
 
 @Entity
-public class Plugin {
+public class Plugin implements EntityBase {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @OrderBy
     private String name;
     private String description;
 
-    @Enumerated(EnumType.STRING)
     private String minVersionSuported;
 
     @OneToOne
