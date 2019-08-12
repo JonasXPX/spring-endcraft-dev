@@ -7,7 +7,6 @@ public class Usuario implements EntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @OneToOne(mappedBy = "")
     private Long id;
     private String userName;
     private String nome;
@@ -18,6 +17,7 @@ public class Usuario implements EntityBase {
 
 
     public Usuario() {}
+    public Usuario(Long id) {this.id = id;}
 
     public Long getId() {
         return id;

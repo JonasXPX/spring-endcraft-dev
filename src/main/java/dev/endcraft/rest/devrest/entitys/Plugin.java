@@ -1,6 +1,7 @@
 package dev.endcraft.rest.devrest.entitys;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Plugin implements EntityBase {
@@ -9,6 +10,8 @@ public class Plugin implements EntityBase {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+
+    @NotNull
     @OrderBy
     @Column(nullable = false)
     private String name;
@@ -16,8 +19,8 @@ public class Plugin implements EntityBase {
 
     private String minVersionSuported;
 
-    @OneToOne(targetEntity = Usuario.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @ManyToOne(targetEntity = Usuario.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "usuario_id", nullable = false)
     private Usuario id_user_add;
 
 

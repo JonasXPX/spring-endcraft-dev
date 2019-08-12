@@ -27,9 +27,14 @@ public class PluginController extends Base {
     }
 
     @ResponseBody
+    @GetMapping(path = "/v1/plugins/")
+    public Iterable<Plugin> getAllPlugins() {
+        return this.pluginRepository.findAll();
+    }
+
+    @ResponseBody
     @PostMapping(path = "/v1/plugin/delete/{id}")
     public ResponseEntity<?> deletePluginById(@PathVariable Long id, HttpServletResponse response) throws IOException {
-
         if(this.pluginRepository.existsById(id)){
             this.pluginRepository.deleteById(id);
             return ResponseEntity.ok("done");
@@ -38,7 +43,7 @@ public class PluginController extends Base {
     }
 
     @ResponseBody
-    @PostMapping(path = "/v1/plugin/add")
+    @PostMapping(path = "/v1/plugin/add/")
     public Plugin addPlugin(@RequestBody Plugin plugin){
         Plugin save = this.pluginRepository.save(plugin);
         return save;
